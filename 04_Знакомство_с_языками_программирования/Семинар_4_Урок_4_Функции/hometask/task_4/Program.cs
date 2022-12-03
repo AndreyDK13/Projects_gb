@@ -32,27 +32,23 @@ void PrintArray (int [] array)
 int MaxValue (int[] array)
 {
     int current_value = array [0];
-    int lag_value = array [0];
     int [] range = new int[2];
     for (int i=0;i<array.Length;i++)
     {
-        if (current_value == lag_value)
+        if (current_value > range [0])
         {
+            range [1] = range [0];
             range [0] = current_value;
             current_value = array [i];            
         }
-        else if (current_value>range [0])
+        else if (current_value > range [1] && current_value < range [0])
         {            
-            range [1] = range [0];
-            range [0] = current_value;
-            lag_value = current_value;
+            range [1] = current_value;
             current_value =array [i];
         }
-        else if (current_value>range [1])
+        else
         {
-            range [1] = current_value;
-            lag_value = current_value;
-            current_value =array [i];
+             current_value =array [i];
         }
     }
     return range [1];
