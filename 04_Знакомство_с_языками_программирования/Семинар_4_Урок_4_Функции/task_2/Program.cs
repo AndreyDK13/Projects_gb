@@ -21,4 +21,4 @@ int Product(int number)
 }
 
 int number = Prompt ("Input number ");
-Console.WriteLine($"Count of digits in {number} = {Product(number)}");
+Console.WriteLine($"Product of {number} = {Product(number)}");
