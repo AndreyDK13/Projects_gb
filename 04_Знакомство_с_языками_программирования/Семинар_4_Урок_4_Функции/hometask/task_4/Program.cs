@@ -10,7 +10,6 @@ int Prompt(string message)
     return Convert.ToInt32(Console.ReadLine());
 }
 
-
 int [] GenerateArray (int Lenght, int minRange, int MaxRange)
 {
     int []array = new int [Lenght];
@@ -31,30 +30,28 @@ void PrintArray (int [] array)
 
 int MaxValue (int[] array)
 {
-    int current_value = array [0];
     int [] range = new int[2];
     range [0] = array [0];
     range [1] = array [1];
     for (int i=1;i<array.Length;i++)
     {
-        if (current_value > range [0])
+        if (array [i] > range [0])
         {
             range [1] = range [0];
-            range [0] = current_value;
-            current_value = array [i];            
+            range [0] = array [i];         
         }
-        else if (current_value > range [1] && current_value < range [0])
+        else if (array [i] > range [1] && array [i] < range [0])
         {            
-            range [1] = current_value;
-            current_value =array [i];
+            range [1] = array [i];
         }
         else
         {
-             current_value =array [i];
+             continue;
         }
     }
     return range [1];
 }
+
 
 int Lenght = Prompt ("Input array lenght ");
 int Min_value = Prompt ("Input Min_value ");
