@@ -33,7 +33,9 @@ int MaxValue (int[] array)
 {
     int current_value = array [0];
     int [] range = new int[2];
-    for (int i=0;i<array.Length;i++)
+    range [0] = array [0];
+    range [1] = array [1];
+    for (int i=1;i<array.Length;i++)
     {
         if (current_value > range [0])
         {
