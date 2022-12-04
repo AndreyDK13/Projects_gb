@@ -31,25 +31,29 @@ void PrintArray (int [] array)
 
 int MaxValue (int[] array)
 {
-    int max_value_1 = array [0];
-    int max_value_2 = array [0]; 
-    for (int i=0;i<array.Length;i++)
+    int current_value = array [0];
+    int [] range = new int[2];
+    range [0] = array [0];
+    range [1] = array [1];
+    for (int i=1;i<array.Length;i++)
     {
-        if (max_value_1 < array [i])
+        if (current_value > range [0])
         {
-            max_value_2 = max_value_1;
-            max_value_1 = array [i];
+            range [1] = range [0];
+            range [0] = current_value;
+            current_value = array [i];            
         }
-        else if (max_value_1 == array [i])
-        {
-            continue;
+        else if (current_value > range [1] && current_value < range [0])
+        {            
+            range [1] = current_value;
+            current_value =array [i];
         }
-        else if (max_value_2 < array [i])
+        else
         {
-            max_value_2 = array [i];
+             current_value =array [i];
         }
     }
-    return max_value_2;
+    return range [1];
 }
 
 int Lenght = Prompt ("Input array lenght ");
