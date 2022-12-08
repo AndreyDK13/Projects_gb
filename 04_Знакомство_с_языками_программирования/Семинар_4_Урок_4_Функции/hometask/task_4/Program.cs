@@ -10,53 +10,52 @@ int Prompt(string message)
     return Convert.ToInt32(Console.ReadLine());
 }
 
-int [] GenerateArray (int Lenght, int minRange, int MaxRange)
+int[] GenerateArray(int Lenght, int minRange, int MaxRange)
 {
-    int []array = new int [Lenght];
-    for (int i = 0;i<array.Length;i++)
+    int[] array = new int[Lenght];
+    for (int i = 0; i < array.Length; i++)
     {
-        array [i] = new Random().Next(minRange,MaxRange+1);
+        array[i] = new Random().Next(minRange, MaxRange + 1);
     }
     return array;
 }
 
-void PrintArray (int [] array)
+void PrintArray(int[] array)
 {
-    for (int i=0;i<array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
-        Console.WriteLine(array[i]);    
+        Console.WriteLine(array[i]);
     }
 }
 
-int MaxValue (int[] array)
+int MaxValue(int[] array, int minRange)
 {
-    int [] range = new int[2];
-    range [0] = array [0];
-    range [1] = array [1];
-    for (int i=1;i<array.Length;i++)
+    int max = minRange;
+    int max2 = minRange;
+    for (int i = 0; i < array.Length; i++)
     {
-        if (array [i] > range [0])
+        if (array[i] > max)
         {
-            range [1] = range [0];
-            range [0] = array [i];         
+            max2 = max;
+            max = array[i];
         }
-        else if (array [i] > range [1] && array [i] < range [0])
-        {            
-            range [1] = array [i];
-        }
-        else
+        else if (array[i] == max)
         {
-             continue;
+            max = array[i];
+        }
+        else if (array[i] >= max2 && array[i] < max)
+        {
+            max2 = array[i];
         }
     }
-    return range [1];
+    return max2;
 }
 
 
-int Lenght = Prompt ("Input array lenght ");
-int Min_value = Prompt ("Input Min_value ");
-int Max_value = Prompt ("Input Max_value ");
-int [] arr = GenerateArray(Lenght, Min_value, Max_value);
-PrintArray (arr);
-Console.WriteLine ($"Second Max value is {MaxValue (arr)}");
+int Lenght = Prompt("Input array lenght ");
+int Min_value = Prompt("Input Min_value ");
+int Max_value = Prompt("Input Max_value ");
+int[] arr = GenerateArray(Lenght, Min_value, Max_value);
+PrintArray(arr);
+Console.WriteLine($"Second Max value is {MaxValue(arr, Min_value)}");
 
