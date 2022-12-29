@@ -55,6 +55,6 @@ int minimum = Prompt("Input minimum value > ");
 int maximum = Prompt("Input maximum value > ");
 double[,] array = new double[M, N];
 PrintArrayTwo(FillArray(array, minimum, maximum));
-int X = Prompt("Input the number of row of searching element > ");
-int Y = Prompt("Input the number of column of searching element > ");
+int X = Prompt("Input the row number of searching element > ");
+int Y = Prompt("Input the column number of searching element > ");
 Verification (X, Y, M, N, array);
