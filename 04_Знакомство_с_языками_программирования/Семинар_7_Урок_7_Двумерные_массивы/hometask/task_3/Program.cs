@@ -37,9 +37,18 @@ void PrintArrayTwo(int[,] matr)
     }
 }
 
-
-void Average(int[,] matr)
+void PrintArray(double[] arr)
 {
+    for (int i = 0; i < arr.Length; i++)
+    {
+        System.Console.Write($"{arr[i]}\t");
+    }
+    System.Console.WriteLine();
+}
+
+double[] Average(int[,] matr)
+{
+    double[] list = new double[matr.GetLength(1)];
     for (int j = 0; j < matr.GetLength(1); j++)
     {
         double summ = 0;
@@ -47,8 +56,11 @@ void Average(int[,] matr)
         {
             summ = summ + matr[i, j];
         }
-        Console.Write($"{summ/matr.GetLength(0)}\t");
+        // Console.Write($"{summ / matr.GetLength(0)}\t");
+        double avg = summ / matr.GetLength(0);
+        list[j] = avg;
     }
+    return list;
 }
 
 
@@ -57,4 +69,4 @@ int C = Prompt("Input the number of columns > ");
 int[,] array = new int[R, C];
 PrintArrayTwo(FillArray(array));
 Console.WriteLine("Averages: ");
-Average(array);
+PrintArray(Average(array));
