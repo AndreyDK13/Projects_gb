@@ -17,8 +17,6 @@ int[] GenerateArray(int Lenght, int minRange, int MaxRange)
     {
         array[i] = new Random().Next(minRange, MaxRange + 1);
     }
-    array[0] = 100;
-    array[1] = 100;
     return array;
 }
 
@@ -41,10 +39,6 @@ int MaxValue(int[] array, int minRange)
             max2 = max;
             max = array[i];
         }
-        // else if (array[i] == max)
-        // {
-        //     max = array[i];
-        // }
         else if (array[i] >= max2 && array[i] < max)
         {
             max2 = array[i];
